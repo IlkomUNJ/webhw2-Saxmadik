@@ -1,0 +1,162 @@
+@layout.app({title: "Admin - Dapur Alle"})
+
+@slot('main')
+<section class="admin-page">
+    <div class="container">
+        <div id="adminContent">
+            <div class="section-header">
+                <h2>Admin Panel</h2>
+                <p>Add, edit, or remove cakes from the menu.</p>
+            </div>
+
+            <div class="admin-form-card">
+                <h3 id="formTitle">Add New Cake</h3>
+                <form id="productForm">
+                    <input type="hidden" id="productId" value="">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Cake Name</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price (e.g., 165000)</label>
+                            <input type="number" id="productPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size</label>
+                            <input type="text" id="productSize" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image Path</label>
+                            <select id="productImage" required>
+                                <option value="">Select an image</option>
+                                <option value="resources/images/brownies-panggang.jpeg">Brownies Panggang</option>
+                                <option value="resources/images/marmer-cake.png">Marmer Cake</option>
+                                <option value="resources/images/brownies-kukus.png">Brownies Kukus</option>
+                                <option value="resources/images/proll-tape.png">Proll Tape</option>
+                                <option value="resources/images/chiffon-coklat.png">Chiffon Coklat</option>
+                                <option value="resources/images/chiffon-keju.png">Chiffon Keju</option>
+                                <option value="resources/images/cake-tape.png">Cake Tape</option>
+                                <option value="resources/images/bolu-jadul.png">Bolu Jadul</option>
+                                <option value="resources/images/blackforest.png">Blackforest</option>
+                                <option value="resources/images/Brownies2.png">Brownies 2</option>
+                            </select>
+                            <small>Or enter custom path: <input type="text" id="customImagePath" placeholder="resources/images/filename.jpg" style="margin-top: 5px; width: 100%; padding: 5px;"></small>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Description</label>
+                            <textarea id="productDescription" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Cake</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-table-card">
+                <h3>Existing Products</h3>
+                <div class="table-wrapper">
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Size</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+                            <!-- Products will be dynamically added here -->
+                            <tr>
+                                <td><img src="{{ asset('resources/images/brownies-panggang.jpeg') }}" alt="Brownies Panggang" class="admin-product-image"></td>
+                                <td>Brownies Panggang</td>
+                                <td>Rp 165.000</td>
+                                <td>20x20 cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(1)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(1)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/marmer-cake.png') }}" alt="Marmer Cake" class="admin-product-image"></td>
+                                <td>Marmer Cake</td>
+                                <td>Rp 225.000</td>
+                                <td>Diameter 24cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(2)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(2)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/brownies-kukus.png') }}" alt="Brownies Kukus" class="admin-product-image"></td>
+                                <td>Brownies Kukus Siram Coklat</td>
+                                <td>Rp 120.000</td>
+                                <td>Diameter 24cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(3)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(3)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/proll-tape.png') }}" alt="Proll Tape" class="admin-product-image"></td>
+                                <td>Proll Tape</td>
+                                <td>Rp 115.000</td>
+                                <td>20x20 cm (Loyang Alufoil)</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(4)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(4)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/chiffon-coklat.png') }}" alt="Chiffon Coklat" class="admin-product-image"></td>
+                                <td>Chiffon Coklat Cake</td>
+                                <td>Rp 160.000</td>
+                                <td>Diameter 22cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(5)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(5)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/chiffon-keju.png') }}" alt="Chiffon Keju" class="admin-product-image"></td>
+                                <td>Chiffon Keju Cake</td>
+                                <td>Rp 165.000</td>
+                                <td>Diameter 22cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(6)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(6)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/cake-tape.png') }}" alt="Cake Tape" class="admin-product-image"></td>
+                                <td>Cake Tape</td>
+                                <td>Rp 115.000</td>
+                                <td>Diameter 24cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(7)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(7)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{ asset('resources/images/bolu-jadul.png') }}" alt="Bolu Jadul" class="admin-product-image"></td>
+                                <td>Bolu Jadul Keju</td>
+                                <td>Rp 115.000</td>
+                                <td>Diameter 24cm</td>
+                                <td>
+                                    <button class="btn-edit" onclick="editProduct(8)">Edit</button>
+                                    <button class="btn-delete" onclick="deleteProduct(8)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endslot
+
+@end

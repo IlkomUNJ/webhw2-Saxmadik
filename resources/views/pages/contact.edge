@@ -1,0 +1,113 @@
+@layout.app({title: "Contact - Dapur Alle"})
+
+@slot('main')
+
+    <!-- Contact Section -->
+    <section class="contact-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>Order Your Cake</h2>
+                <p>Fill out the form below and we'll contact you via WhatsApp to confirm your order</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h4>📞 Contact Information</h4>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <div>
+                            <strong>Phone & WhatsApp</strong>
+                            <p>+62 812-3456-7890</p>
+                            <small>Available 8 AM - 8 PM</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">💬</span>
+                        <div>
+                            <strong>WhatsApp Order</strong>
+                            <p>Fast response via WhatsApp</p>
+                            <small>Click order button to chat directly</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                      <span class="icon">🎂</span>
+                      <div>
+                        <strong>Custom Cake Available</strong>
+                        <p>We can customize your cake too!</p>
+                        <small>Let us know your ideas or special requests</small>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📦</span>
+                        <div>
+                          <strong>Delivery Service</strong>
+                          <p>We are in Jakarta Area</p>
+                          <small>Send your address after order confirmation</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <div>
+                            <strong>Order Lead Time</strong>
+                            <p>1-2 days advance notice</p>
+                            <small>All cakes are made fresh to order</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-whatsapp" onclick="openWhatsApp()">
+                        <span>📱</span>
+                        Chat on WhatsApp
+                    </button>
+                </div>
+
+                <div class="order-form">
+                    <h4>📝 Order Form</h4>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="e.g., 081234567890">
+                        </div>
+                        <div class="form-group">
+                            <label for="cakeType">Cake Type *</label>
+                            <select id="cakeType" name="cakeType" required>
+                                <option value="">Select a cake type</option>
+                                <option value="Brownies Panggang">Brownies Panggang</option>
+                                <option value="Marmer Cake (Butter Cake)">Marmer Cake (Butter Cake)</option>
+                                <option value="Brownies Kukus Siram Coklat">Brownies Kukus Siram Coklat</option>
+                                <option value="Proll Tape">Proll Tape</option>
+                                <option value="Chiffon Coklat Cake">Chiffon Coklat Cake</option>
+                                <option value="Chiffon Keju Cake">Chiffon Keju Cake</option>
+                                <option value="Cake Tape">Cake Tape</option>
+                                <option value="Bolu Jadul Keju">Bolu Jadul Keju</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size *</label>
+                            <input type="text" id="size" name="size" required placeholder="e.g., 20x20 cm or Diameter 24cm">
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate">Pickup Date *</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Any special requests or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-whatsapp">
+                            <span>📱</span>
+                            Order via WhatsApp
+                        </button>
+                    </form>
+                    <p class="form-note">By clicking order, you'll be redirected to WhatsApp to complete your order</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@endslot
+
+@end

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title ||
+"Dapuralle" }}</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  
+  {{-- This line was removed, as @vite handles it: <link rel="stylesheet" href="style.css"> --}}
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  @if ($slots.meta)
+  {{{ await $slots.meta() }}}
+  @endif
+</head>
+
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🛒 My Cart</h3>
+            <button class="modal-close" onclick="closeCart()" type="button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="cartItems"></div>
+            <div id="cartTotal" class="cart-total" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<body>
+  @include('partials/header')
+  {{{ await $slots.main() }}}
+  @include('partials/footer')
+</body>
+
+</html>

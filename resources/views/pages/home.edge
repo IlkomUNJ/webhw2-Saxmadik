@@ -1,0 +1,215 @@
+@layout.app({title: "Home - Dapur Alle"})
+
+@slot('main')
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-icon">🍰</div>
+                <h2>Dapur Alle</h2>
+                <p class="hero-subtitle">Fresh & Delicious Homemade Cakes</p>
+                <p class="hero-description">
+                    Delicious homemade cakes baked fresh to order.
+                    From classic brownies to fluffy chiffon cakes,
+                    each cake is made with love and premium ingredients.
+                </p>
+                <div class="hero-buttons">
+                    <a href="/menu" class="btn btn-primary">See Menu</a>
+                    <a href="/contact" class="btn btn-secondary">Order Now</a>
+                </div>
+                <div class="rating">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span>4.9/5 from 1,200+ happy customers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-bar">
+                <div class="search-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search for cakes..." 
+                        class="search-input"
+                    >
+                    <button 
+                        id="clearSearchBtn" 
+                        class="clear-search-btn" 
+                        onclick="clearSearch()"
+                        style="display: none;"
+                    >
+                        ✕
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h3>Popular Cakes</h3>
+                <p>Our most loved cakes, baked fresh to order</p>
+            </div>
+
+            <div class="menu-grid" id="cakesGrid">
+                <div class="menu-item" data-cake="Brownies Panggang">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Brownies Panggang')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/brownies-panggang.jpeg') }}" alt="Brownies Panggang" class="menu-image">
+                    <h4>Brownies Panggang</h4>
+                    <p>Rich, fudgy baked brownies with perfect texture</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">20x20 cm</span>
+                            <span class="price">Rp 165.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+
+                <div class="menu-item" data-cake="Marmer Cake">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Marmer Cake')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/marmer-cake.png') }}" alt="Marmer Cake" class="menu-image">
+                    <h4>Marmer Cake</h4>
+                    <p>Classic marble cake with butter richness</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">Diameter 24cm</span>
+                            <span class="price">Rp 225.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+
+                <div class="menu-item" data-cake="Brownies Kukus Siram Coklat">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Brownies Kukus Siram Coklat')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/brownies-kukus.png') }}" alt="Brownies Kukus" class="menu-image">
+                    <h4>Brownies Kukus Siram Coklat</h4>
+                    <p>Steamed brownies topped with chocolate glaze</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">Diameter 24cm</span>
+                            <span class="price">Rp 120.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+
+                <div class="menu-item" data-cake="Chiffon Coklat Cake">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Chiffon Coklat Cake')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/chiffon-coklat.png') }}" alt="Chiffon Coklat" class="menu-image">
+                    <h4>Chiffon Coklat Cake</h4>
+                    <p>Light and fluffy chocolate chiffon cake</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">Diameter 22cm</span>
+                            <span class="price">Rp 160.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+
+                <div class="menu-item" data-cake="Chiffon Keju Cake">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Chiffon Keju Cake')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/chiffon-keju.png') }}" alt="Chiffon Keju" class="menu-image">
+                    <h4>Chiffon Keju Cake</h4>
+                    <p>Airy chiffon cake with rich cheese flavor</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">Diameter 22cm</span>
+                            <span class="price">Rp 165.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+
+                <div class="menu-item" data-cake="Bolu Jadul Keju">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this, 'Bolu Jadul Keju')" aria-label="Add to wishlist" type="button">
+                        <span class="heart-icon">🤍</span>
+                    </button>
+                    <img src="{{ asset('resources/images/bolu-jadul.png') }}" alt="Bolu Jadul" class="menu-image">
+                    <h4>Bolu Jadul Keju</h4>
+                    <p>Classic old-style cheese sponge cake</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="size">Diameter 24cm</span>
+                            <span class="price">Rp 115.000</span>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-order">Order Now</a>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <p>All cakes are made fresh to order. Please allow 1-2 days for preparation.</p>
+                <a href="/menu" class="btn btn-primary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About Our Cakes</h3>
+                    <p>We specialize in creating delicious homemade cakes using traditional Indonesian recipes and premium ingredients.
+                    Each cake is baked fresh to order, ensuring the highest quality and taste.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span class="feature-icon">🥚</span>
+                            <div>
+                                <h4>Premium Ingredients</h4>
+                                <p>Only the finest ingredients for the best taste</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">👩‍🍳</span>
+                            <div>
+                                <h4>Made to Order</h4>
+                                <p>Fresh baked cakes prepared just for you</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">❤️</span>
+                            <div>
+                                <h4>Made with Love</h4>
+                                <p>Every cake is baked with care and passion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="{{ asset('resources/images/Dapuralle-logo2.png') }}" alt="Homemade Cake" class="cake-display" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>❤️ My Wishlist</h3>
+                <button class="modal-close" onclick="closeWishlist()" type="button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="wishlistItems"></div>
+            </div>
+        </div>
+    </div>
+
+@endslot
+
+@end
